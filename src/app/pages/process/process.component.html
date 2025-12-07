@@ -1,0 +1,167 @@
+<div class="process-page page-container" [attr.dir]="direction$ | async">
+  <div class="page-wrapper">
+    <!-- Header -->
+    <div class="page-header">
+      <h1>{{ t?.process?.title }}</h1>
+      <p>{{ t?.process?.subtitle }}</p>
+    </div>
+
+    <!-- Process Timeline -->
+    <div class="process-timeline">
+      <div class="process-steps">
+        <!-- Step 1 -->
+        <div class="process-step">
+          <div class="step-number-badge">01</div>
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <div class="step-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                </svg>
+              </div>
+            </div>
+            <h2>{{ t?.process?.steps?.[0]?.title }}</h2>
+            <p>{{ t?.process?.steps?.[0]?.description }}</p>
+            <div class="step-details">
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[0]?.detail1 || 'Proje gereksinimleri analizi' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[0]?.detail2 || 'Kapı türü ve ölçü belirleme' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[0]?.detail3 || 'Lojistik çözüm değerlendirmesi' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step">
+          <div class="step-number-badge">02</div>
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <div class="step-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+            </div>
+            <h2>{{ t?.process?.steps?.[1]?.title }}</h2>
+            <p>{{ t?.process?.steps?.[1]?.description }}</p>
+            <div class="step-details">
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[1]?.detail1 || 'Detaylı fiyat teklifi hazırlama' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[1]?.detail2 || 'Ödeme koşulları belirleme' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[1]?.detail3 || 'Teslimat süresi planlama' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step">
+          <div class="step-number-badge">03</div>
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <div class="step-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                </svg>
+              </div>
+            </div>
+            <h2>{{ t?.process?.steps?.[2]?.title }}</h2>
+            <p>{{ t?.process?.steps?.[2]?.description }}</p>
+            <div class="step-details">
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[2]?.detail1 || 'ISO 9001 standartlarında üretim' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[2]?.detail2 || 'Her aşamada kalite kontrol' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[2]?.detail3 || 'Afrika ihracatına uygun paketleme' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step">
+          <div class="step-number-badge">04</div>
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <div class="step-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+            </div>
+            <h2>{{ t?.process?.steps?.[3]?.title }}</h2>
+            <p>{{ t?.process?.steps?.[3]?.description }}</p>
+            <div class="step-details">
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[3]?.detail1 || 'Güvenli lojistik ağı ile taşıma' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[3]?.detail2 || 'Gümrük işlemleri yönetimi' }}</span>
+              </div>
+              <div class="detail-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ t?.process?.steps?.[3]?.detail3 || 'Online takip sistemi' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="process-cta">
+      <h3>{{ t?.process?.cta?.title }}</h3>
+      <p>{{ t?.process?.cta?.description }}</p>
+      <a routerLink="/contact" class="btn-secondary">
+        {{ t?.process?.cta?.button }}
+      </a>
+    </div>
+  </div>
+</div>

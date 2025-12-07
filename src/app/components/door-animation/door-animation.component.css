@@ -1,0 +1,269 @@
+/* Door Animation Component - Kapı Açılış Animasyonu */
+
+.door-animation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2C1810 0%, #3D2415 50%, #2C1810 100%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  will-change: opacity;
+}
+
+.door-animation-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.door-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+/* Kapı Kanatları */
+.door {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #5A3E2B 0%, #8B5E3C 50%, #6B4E3A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  border: 3px solid #3D2415;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.door-left {
+  left: 0;
+  transform-origin: right center;
+}
+
+.door-left.open {
+  transform: rotateY(-120deg) translateX(-20px);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.door-right {
+  right: 0;
+  transform-origin: left center;
+}
+
+.door-right.open {
+  transform: rotateY(120deg) translateX(20px);
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Kapı Paneli */
+.door-panel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+/* Kapı Deseni */
+.door-pattern {
+  width: 80%;
+  height: 60%;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.door-pattern::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.door-pattern::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Kapı Kolu */
+.door-handle {
+  position: absolute;
+  width: 20px;
+  height: 80px;
+  background: linear-gradient(135deg, #C9A961 0%, #8B6914 100%);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.door-handle-left {
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.door-handle-right {
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.door.open .door-handle {
+  transform: translateY(-50%) rotate(15deg);
+}
+
+/* Kapı Arası Işık */
+.door-light {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 220, 180, 0.8) 20%,
+    rgba(255, 240, 200, 1) 50%,
+    rgba(255, 220, 180, 0.8) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease 0.3s, width 0.8s ease 0.3s;
+  box-shadow: 0 0 50px rgba(255, 220, 180, 0.5);
+  z-index: 10;
+  will-change: opacity, width;
+}
+
+.door-light.visible {
+  opacity: 1;
+  width: 200px;
+  animation: lightPulse 2s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: 0 0 50px rgba(255, 220, 180, 0.5);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 100px rgba(255, 220, 180, 0.8);
+  }
+}
+
+/* Performance optimizations */
+.door-container {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.door-panel {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Logo */
+.door-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.door-logo.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.door-logo h1 {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 800;
+  color: #F5E6D3;
+  margin: 0;
+  text-shadow: 
+    0 0 20px rgba(245, 230, 211, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.1em;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.door-logo p {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: #D4C4B0;
+  margin: 0.5rem 0 0 0;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .door-pattern {
+    width: 70%;
+    height: 50%;
+  }
+
+  .door-handle {
+    width: 15px;
+    height: 60px;
+  }
+
+  .door-light.visible {
+    width: 150px;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .door-left {
+  right: 0;
+  left: auto;
+  transform-origin: left center;
+}
+
+[dir="rtl"] .door-left.open {
+  transform: rotateY(110deg) translateX(10px);
+}
+
+[dir="rtl"] .door-right {
+  left: 0;
+  right: auto;
+  transform-origin: right center;
+}
+
+[dir="rtl"] .door-right.open {
+  transform: rotateY(-110deg) translateX(-10px);
+}
+

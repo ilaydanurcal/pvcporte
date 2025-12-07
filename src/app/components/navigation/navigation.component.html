@@ -1,0 +1,124 @@
+<nav [attr.dir]="direction$ | async" [class.hidden]="!isAnimationComplete">
+  <div class="nav-container">
+    <div class="nav-content">
+      <!-- Logo -->
+      <div class="logo-container">
+        <a routerLink="/" class="logo">
+          <img src="assets/images/obsansuarllogo.png" alt="OBSAN SUARL" class="logo-image">
+        </a>
+      </div>
+
+      <!-- Desktop Menu - Center -->
+      <div class="nav-menu">
+        <a
+          *ngFor="let item of navItems"
+          [routerLink]="item.href"
+          [routerLinkActiveOptions]="item.href === '/' ? {exact: true} : {exact: false}"
+          routerLinkActive="active"
+          class="nav-link"
+          (click)="closeMenu()"
+        >
+          {{ item.label }}
+        </a>
+      </div>
+
+      <!-- Right Side: Language Switcher + CTA -->
+      <div class="nav-right">
+        <!-- Language Switcher Dropdown -->
+        <div class="language-dropdown">
+          <button 
+            class="lang-dropdown-btn"
+            (click)="toggleLangDropdown()"
+            type="button"
+          >
+            <img class="lang-flag" [src]="getCurrentLanguageFlag()" [attr.alt]="getCurrentLanguageCountry()" [attr.title]="getCurrentLanguageCountry()" />
+            <span class="lang-name">{{ getCurrentLanguageName() }}</span>
+            <svg class="lang-arrow" [class.open]="isLangDropdownOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" [class.open]="isLangDropdownOpen">
+            <button 
+              *ngFor="let lang of languages"
+              (click)="setLanguage(lang.code)"
+              [class.active]="getCurrentLanguage() === lang.code"
+              class="lang-dropdown-item"
+              type="button"
+              [attr.title]="lang.country"
+            >
+              <img class="lang-flag" [src]="lang.flag" [attr.alt]="lang.country" [attr.title]="lang.country" />
+              <span class="lang-name">{{ lang.name }}</span>
+              <span class="lang-country">{{ lang.country }}</span>
+              <svg *ngIf="getCurrentLanguage() === lang.code" class="lang-check" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <a routerLink="/contact" class="cta-button">
+          {{ t?.nav?.quote }}
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="mobile-menu-btn"
+          (click)="toggleMenu()"
+          aria-label="Toggle menu"
+        >
+          <svg *ngIf="!isOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg *ngIf="isOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu - Outside container for better z-index control -->
+  <div [class.open]="isOpen" class="mobile-menu">
+    <a
+      *ngFor="let item of navItems"
+      [routerLink]="item.href"
+      [routerLinkActiveOptions]="item.href === '/' ? {exact: true} : {exact: false}"
+      routerLinkActive="active"
+      class="mobile-nav-link"
+      (click)="closeMenu()"
+    >
+      {{ item.label }}
+    </a>
+    
+    <!-- Mobile Language Switcher -->
+    <div class="mobile-lang-switcher">
+      <span class="mobile-lang-label">
+        <span *ngIf="getCurrentLanguage() === 'tr'">Dil / Language:</span>
+        <span *ngIf="getCurrentLanguage() === 'en'">Language:</span>
+        <span *ngIf="getCurrentLanguage() === 'fr'">Langue:</span>
+        <span *ngIf="getCurrentLanguage() === 'ar'">اللغة:</span>
+      </span>
+      <div class="mobile-lang-grid">
+        <button 
+          *ngFor="let lang of languages"
+          (click)="setLanguage(lang.code)"
+          [class.active]="getCurrentLanguage() === lang.code"
+          class="mobile-lang-btn"
+          type="button"
+          [attr.title]="lang.country"
+        >
+          <img class="lang-flag" [src]="lang.flag" [attr.alt]="lang.country" [attr.title]="lang.country" />
+          <span class="lang-name">{{ lang.name }}</span>
+          <span class="lang-country">{{ lang.country }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile CTA Button -->
+    <div class="mobile-cta-wrapper">
+      <a routerLink="/contact" (click)="closeMenu()" class="mobile-cta-button">
+        {{ t?.nav?.quote }}
+      </a>
+    </div>
+  </div>
+</nav>

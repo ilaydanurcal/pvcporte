@@ -1,0 +1,152 @@
+/* Mobile Fixed Buttons Container */
+.mobile-fixed-buttons {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  gap: 0;
+  pointer-events: none;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-fixed-buttons > * {
+  pointer-events: all;
+}
+
+/* WhatsApp Button */
+.whatsapp-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0;
+  position: relative;
+}
+
+.whatsapp-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:active {
+  background: linear-gradient(135deg, #128C7E, #25D366);
+  opacity: 0.95;
+}
+
+.whatsapp-button svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Call Button */
+.call-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-text-secondary));
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0;
+  position: relative;
+}
+
+.call-button::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.call-button:hover,
+.call-button:active {
+  opacity: 0.95;
+  background: linear-gradient(135deg, var(--color-text-secondary), var(--color-primary));
+}
+
+.call-button svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Desktop WhatsApp Button */
+.desktop-whatsapp-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.desktop-whatsapp-button:hover {
+  background: linear-gradient(135deg, #128C7E, #25D366);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+  transform: translateY(-2px);
+}
+
+.desktop-whatsapp-button svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.desktop-whatsapp-text {
+  white-space: nowrap;
+}
+
+/* Hide mobile buttons on Desktop */
+@media (min-width: 769px) {
+  .mobile-fixed-buttons {
+    display: none;
+  }
+
+  .desktop-whatsapp-button {
+    display: flex;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .mobile-fixed-buttons {
+    display: flex;
+  }
+}

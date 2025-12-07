@@ -1,0 +1,28 @@
+<div class="door-animation-overlay" [class.hidden]="isAnimationComplete">
+  <div class="door-container">
+    <!-- Sol Kapı -->
+    <div class="door door-left" [class.open]="isOpening">
+      <div class="door-panel">
+        <div class="door-handle door-handle-left"></div>
+        <div class="door-pattern"></div>
+      </div>
+    </div>
+    
+    <!-- Sağ Kapı -->
+    <div class="door door-right" [class.open]="isOpening">
+      <div class="door-panel">
+        <div class="door-handle door-handle-right"></div>
+        <div class="door-pattern"></div>
+      </div>
+    </div>
+    
+    <!-- Kapı Arası Işık -->
+    <div class="door-light" [class.visible]="isOpening"></div>
+  </div>
+  
+  <!-- Logo/İsim -->
+  <div class="door-logo" [class.fade-out]="isOpening">
+    <h1>OBSAN SUARL</h1>
+    <p>{{ getSubtitle() }}</p>
+  </div>
+</div>

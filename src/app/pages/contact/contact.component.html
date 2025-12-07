@@ -1,0 +1,212 @@
+<div class="contact-page page-container" [attr.dir]="direction$ | async">
+  <div class="page-wrapper">
+    <!-- Header -->
+    <div class="contact-header">
+      <div class="header-badge">
+        <span *ngIf="getCurrentLanguage() === 'tr'">İletişim</span>
+        <span *ngIf="getCurrentLanguage() === 'en'">Contact</span>
+        <span *ngIf="getCurrentLanguage() === 'fr'">Contact</span>
+        <span *ngIf="getCurrentLanguage() === 'ar'">اتصل بنا</span>
+      </div>
+      <h1>{{ t?.quote?.title }}</h1>
+      <p class="header-subtitle">{{ t?.quote?.description }}</p>
+    </div>
+
+    <div class="contact-content">
+      <!-- Left Side: Contact Info -->
+      <div class="contact-info">
+        <div class="info-section">
+          <h2>
+            <span *ngIf="getCurrentLanguage() === 'tr'">İletişim Bilgileri</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Contact Information</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Informations de Contact</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">معلومات الاتصال</span>
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <div class="contact-detail-content">
+              <h3>{{ t?.quote?.email }}</h3>
+              <a href="mailto:info@pvcporte.com">info@pvcporte.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-detail-item">
+            <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <div class="contact-detail-content">
+              <h3>{{ t?.quote?.phone }}</h3>
+              <a href="tel:+905321307143">+90 532 130 71 43</a>
+            </div>
+          </div>
+          
+          <div class="contact-detail-item">
+            <div class="contact-icon-wrapper">
+              <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+            </div>
+            <div class="contact-detail-content">
+              <h3>{{ t?.quote?.whatsapp }}</h3>
+              <a [href]="t?.hero?.whatsappLink || 'https://wa.me/905321307143'" target="_blank">
+                {{ t?.quote?.whatsappDesc }}
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-detail-item">
+            <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <div class="contact-detail-content">
+              <h3>{{ t?.footer?.address }}</h3>
+              <p>{{ t?.footer?.addressValue }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Form -->
+      <div class="contact-form-wrapper">
+        <div class="form-header">
+          <h2>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Teklif Formu</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Quote Form</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Formulaire de Devis</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">نموذج عرض الأسعار</span>
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm" class="contact-form" [attr.data-gtm-form]="'quote-request'">
+          <!-- Full Name & Email Row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">{{ t?.quote?.form?.fullName }}</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                [(ngModel)]="formData.fullName"
+                required
+                [attr.data-gtm-field]="'full-name'"
+              >
+            </div>
+            <div class="form-group">
+              <label for="email">{{ t?.quote?.form?.email }}</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="formData.email"
+                required
+                [attr.data-gtm-field]="'email'"
+              >
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">{{ t?.quote?.form?.phone }}</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                [(ngModel)]="formData.phone"
+                required
+                [attr.data-gtm-field]="'phone'"
+              >
+            </div>
+          </div>
+
+          <!-- Product Types -->
+          <div class="form-group product-types-group">
+            <label>
+              <span *ngIf="getCurrentLanguage() === 'tr'">PVC Kapı Modelleri</span>
+              <span *ngIf="getCurrentLanguage() === 'en'">PVC Door Models</span>
+              <span *ngIf="getCurrentLanguage() === 'fr'">Modèles de Porte PVC</span>
+              <span *ngIf="getCurrentLanguage() === 'ar'">موديلات باب PVC</span>
+              <span class="required-asterisk">*</span>
+            </label>
+            <div class="product-types-container">
+              <div 
+                *ngFor="let type of getPvcModels()" 
+                class="product-type-checkbox"
+                [attr.data-gtm-product-type]="type"
+              >
+                <input
+                  type="checkbox"
+                  [id]="'product-' + type"
+                  [name]="'product-' + type"
+                  [value]="type"
+                  [checked]="isProductTypeSelected(type)"
+                  (change)="toggleProductType(type)"
+                  [attr.data-gtm-field]="'product-type'"
+                >
+                <label [for]="'product-' + type">{{ type }}</label>
+              </div>
+            </div>
+            <div *ngIf="formData.productTypes.length === 0 && contactForm.submitted" class="form-error-message">
+              <span *ngIf="getCurrentLanguage() === 'tr'">En az bir PVC kapı modeli seçmelisiniz</span>
+              <span *ngIf="getCurrentLanguage() === 'en'">Please select at least one PVC door model</span>
+              <span *ngIf="getCurrentLanguage() === 'fr'">Veuillez sélectionner au moins un modèle de porte PVC</span>
+              <span *ngIf="getCurrentLanguage() === 'ar'">يرجى اختيار نموذج باب PVC واحد على الأقل</span>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="form-group">
+            <label for="quantity">{{ t?.quote?.form?.quantity }}</label>
+            <input
+              type="text"
+              id="quantity"
+              name="quantity"
+              [(ngModel)]="formData.quantity"
+              [placeholder]="t?.quote?.form?.quantityPlaceholder"
+              [attr.data-gtm-field]="'quantity'"
+            >
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="message">{{ t?.quote?.form?.message }}</label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="formData.message"
+              [placeholder]="t?.quote?.form?.messagePlaceholder"
+              [attr.data-gtm-field]="'message'"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            [disabled]="!contactForm.valid || formData.productTypes.length === 0"
+            class="form-submit"
+            [attr.data-gtm-event]="'submit-quote-request'"
+            [attr.data-gtm-category]="'form'"
+            [attr.data-gtm-action]="'submit'"
+            [attr.data-gtm-label]="'quote-request'"
+          >
+            {{ t?.quote?.form?.send }}
+          </button>
+
+          <!-- Success Message -->
+          <div *ngIf="isSuccess" class="form-success">
+            {{ t?.quote?.form?.success }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

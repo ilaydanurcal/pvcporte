@@ -1,0 +1,411 @@
+<div class="home-page" [attr.dir]="direction$ | async">
+  <app-hero-section></app-hero-section>
+  
+  <!-- Why Choose OBSAN SUARL Section -->
+  <section class="why-section">
+    <div class="page-wrapper">
+      <div class="why-header">
+        <h2>{{ t?.whyUs?.title }}</h2>
+        <p>{{ t?.whyUs?.subtitle }}</p>
+      </div>
+      
+      <div class="why-grid">
+        <div *ngFor="let item of t?.whyUs?.items" class="why-card">
+          <div class="why-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Africa Export Section -->
+  <section class="africa-section">
+    <div class="page-wrapper">
+      <div class="africa-header">
+        <h2>{{ t?.home?.africaExport?.title }}</h2>
+        <p class="africa-subtitle">{{ t?.home?.africaExport?.description }}</p>
+      </div>
+      
+      <div class="africa-content-new">
+        <!-- Features Grid -->
+        <div class="africa-features-grid">
+          <div *ngFor="let item of t?.home?.africaExport?.features; let i = index" class="africa-feature-card">
+            <div class="feature-number">{{ i + 1 }}</div>
+            <div class="feature-content">
+              <h4>{{ item }}</h4>
+            </div>
+            <div class="feature-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Card -->
+        <div class="africa-stats-card">
+          <div class="stats-header">
+            <h3>{{ t?.home?.africaExport?.statsTitle }}</h3>
+            <div class="stats-divider"></div>
+          </div>
+          <div class="stats-grid">
+            <div *ngFor="let stat of t?.home?.africaExport?.stats" class="stat-card-item">
+              <div class="stat-border"></div>
+              <div class="stat-content">
+                <div class="stat-value-new">{{ stat.value }}</div>
+                <div class="stat-label-new">{{ stat.label }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="africa-cta-wrapper">
+        <a routerLink="/products" class="africa-cta-btn">
+          <span>{{ t?.home?.africaExport?.cta }}</span>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Preview Section -->
+  <section class="products-preview-section">
+    <div class="page-wrapper">
+      <div class="products-preview-header">
+        <div class="header-badge">
+          <span *ngIf="getCurrentLanguage() === 'tr'">Ürünlerimiz</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Our Products</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Nos Produits</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">منتجاتنا</span>
+        </div>
+        <h2>{{ t?.home?.productsPreview?.title }}</h2>
+        <p>{{ t?.home?.productsPreview?.subtitle }}</p>
+      </div>
+      
+      <div class="products-showcase">
+        <div class="product-showcase-card">
+          <div class="product-showcase-image">
+            <img src="assets/images/OS005.jpeg" alt="PVC Door" (error)="onImageError($event)">
+          </div>
+          <div class="product-showcase-content">
+            <div class="product-showcase-header">
+              <div class="product-icon-large">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                </svg>
+              </div>
+              <div class="product-title-section">
+                <h3>
+                  <span *ngIf="getCurrentLanguage() === 'tr'">PVC Kapılar</span>
+                  <span *ngIf="getCurrentLanguage() === 'en'">PVC Doors</span>
+                  <span *ngIf="getCurrentLanguage() === 'fr'">Portes PVC</span>
+                  <span *ngIf="getCurrentLanguage() === 'ar'">أبواب PVC</span>
+                </h3>
+                <div class="product-badge-row">
+                  <span class="product-badge">
+                    <span *ngIf="getCurrentLanguage() === 'tr'">26 Model</span>
+                    <span *ngIf="getCurrentLanguage() === 'en'">26 Models</span>
+                    <span *ngIf="getCurrentLanguage() === 'fr'">26 Modèles</span>
+                    <span *ngIf="getCurrentLanguage() === 'ar'">26 موديل</span>
+                  </span>
+                  <span class="product-badge">
+                    <span *ngIf="getCurrentLanguage() === 'tr'">CE Sertifikalı</span>
+                    <span *ngIf="getCurrentLanguage() === 'en'">CE Certified</span>
+                    <span *ngIf="getCurrentLanguage() === 'fr'">Certifié CE</span>
+                    <span *ngIf="getCurrentLanguage() === 'ar'">معتمد CE</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="product-showcase-body">
+            <p class="product-description-main">
+              <span *ngIf="getCurrentLanguage() === 'tr'">Dayanıklı, temizliği kolay ve ekonomik PVC kapılar. Geniş model yelpazesi ile projelerinize uygun çözümler. CE sertifikalı, yüksek kalite standartlarında üretilmiş kapılar.</span>
+              <span *ngIf="getCurrentLanguage() === 'en'">Durable, easy-to-clean and economical PVC doors. Wide model range for your projects. CE certified doors manufactured to high quality standards.</span>
+              <span *ngIf="getCurrentLanguage() === 'fr'">Portes PVC durables, faciles à nettoyer et économiques. Large gamme de modèles pour vos projets. Portes certifiées CE fabriquées selon des normes de qualité élevées.</span>
+              <span *ngIf="getCurrentLanguage() === 'ar'">أبواب PVC متينة وسهلة التنظيف واقتصادية. مجموعة واسعة من الموديلات لمشاريعكم. أبواب معتمدة CE مصنوعة بمعايير جودة عالية.</span>
+            </p>
+            
+            <div class="product-features-grid">
+              <div class="feature-item-card">
+                <div class="feature-icon-small">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <span>
+                  <span *ngIf="getCurrentLanguage() === 'tr'">26 farklı model</span>
+                  <span *ngIf="getCurrentLanguage() === 'en'">26 different models</span>
+                  <span *ngIf="getCurrentLanguage() === 'fr'">26 modèles différents</span>
+                  <span *ngIf="getCurrentLanguage() === 'ar'">26 موديل مختلف</span>
+                </span>
+              </div>
+              <div class="feature-item-card">
+                <div class="feature-icon-small">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <span>
+                  <span *ngIf="getCurrentLanguage() === 'tr'">Özel ölçü seçenekleri</span>
+                  <span *ngIf="getCurrentLanguage() === 'en'">Custom size options</span>
+                  <span *ngIf="getCurrentLanguage() === 'fr'">Options de taille personnalisées</span>
+                  <span *ngIf="getCurrentLanguage() === 'ar'">خيارات حجم مخصصة</span>
+                </span>
+              </div>
+              <div class="feature-item-card">
+                <div class="feature-icon-small">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <span>
+                  <span *ngIf="getCurrentLanguage() === 'tr'">CE sertifikalı</span>
+                  <span *ngIf="getCurrentLanguage() === 'en'">CE certified</span>
+                  <span *ngIf="getCurrentLanguage() === 'fr'">Certifié CE</span>
+                  <span *ngIf="getCurrentLanguage() === 'ar'">معتمد CE</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="product-showcase-footer">
+            <a routerLink="/products" class="product-explore-link">
+              <span>{{ t?.home?.productsPreview?.learnMore }}</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="products-cta">
+        <a routerLink="/products" class="products-view-all-btn">
+          <span>{{ t?.home?.productsPreview?.viewAll }}</span>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Quality Section -->
+  <section class="certifications-section">
+    <div class="page-wrapper">
+      <div class="certifications-header">
+        <h2>
+          <span *ngIf="getCurrentLanguage() === 'tr'">Sertifikalar ve Kalite Standartları</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Certifications & Quality Standards</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Certifications et Normes de Qualité</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">الشهادات ومعايير الجودة</span>
+        </h2>
+        <p>
+          <span *ngIf="getCurrentLanguage() === 'tr'">Uluslararası standartlara uygun üretim ve kalite garantisi</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Production in accordance with international standards and quality guarantee</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Production conforme aux normes internationales et garantie de qualité</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">الإنتاج وفق المعايير الدولية وضمان الجودة</span>
+        </p>
+      </div>
+      <div class="certifications-grid">
+        <div class="cert-card">
+          <div class="cert-icon">CE</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">CE Sertifikası</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">CE Certification</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Certification CE</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">شهادة CE</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Avrupa Birliği standartlarına uygun üretim</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Production in accordance with European Union standards</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Production conforme aux normes de l'Union européenne</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">الإنتاج وفق معايير الاتحاد الأوروبي</span>
+          </p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">✓</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Kalite Kontrol</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Quality Control</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Contrôle Qualité</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">مراقبة الجودة</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Her ürün titizlikle test edilir</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Every product is thoroughly tested</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Chaque produit est rigoureusement testé</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">يتم اختبار كل منتج بدقة</span>
+          </p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🌍</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Uluslararası İhracat</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">International Export</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Export International</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">التصدير الدولي</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">50+ ülkeye ihracat deneyimi</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Export experience to 50+ countries</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Expérience d'exportation vers plus de 50 pays</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">خبرة التصدير إلى أكثر من 50 دولة</span>
+          </p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">⚡</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Hızlı Üretim</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Fast Production</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Production Rapide</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">إنتاج سريع</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">3-6 hafta içinde teslimat</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Delivery within 3-6 weeks</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Livraison en 3-6 semaines</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">التسليم خلال 3-6 أسابيع</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Overview Section -->
+  <section class="process-overview-section">
+    <div class="page-wrapper">
+      <div class="process-header">
+        <h2>
+          <span *ngIf="getCurrentLanguage() === 'tr'">Çalışma Sürecimiz</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Our Working Process</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Notre Processus de Travail</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">عملية عملنا</span>
+        </h2>
+        <p>
+          <span *ngIf="getCurrentLanguage() === 'tr'">Siparişten teslimata kadar profesyonel süreç yönetimi</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Professional process management from order to delivery</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Gestion professionnelle du processus de la commande à la livraison</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">إدارة عملية احترافية من الطلب إلى التسليم</span>
+        </p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Teklif ve Planlama</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Quote & Planning</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Devis et Planification</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">عرض السعر والتخطيط</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Projenizin ihtiyaçlarını analiz ediyor, özel teklif hazırlıyoruz</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">We analyze your project needs and prepare a custom quote</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Nous analysons les besoins de votre projet et préparons un devis personnalisé</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">نحلل احتياجات مشروعك ونعد عرض أسعار مخصص</span>
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Üretim</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Production</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Production</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">الإنتاج</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Modern tesislerimizde kaliteli üretim gerçekleştiriyoruz</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Quality production in our modern facilities</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Production de qualité dans nos installations modernes</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">إنتاج عالي الجودة في مرافقنا الحديثة</span>
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Kalite Kontrol</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Quality Control</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Contrôle Qualité</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">مراقبة الجودة</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Her ürün kalite kontrol testlerinden geçer</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Every product passes quality control tests</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Chaque produit passe des tests de contrôle qualité</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">كل منتج يخضع لاختبارات مراقبة الجودة</span>
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Paketleme ve Teslimat</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Packaging & Delivery</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Emballage et Livraison</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">التعبئة والتسليم</span>
+          </h3>
+          <p>
+            <span *ngIf="getCurrentLanguage() === 'tr'">Güvenli paketleme ve zamanında teslimat</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Secure packaging and timely delivery</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Emballage sécurisé et livraison dans les délais</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">تعبئة آمنة وتسليم في الوقت المحدد</span>
+          </p>
+        </div>
+      </div>
+      <div class="process-cta">
+        <a routerLink="/process" class="btn-secondary">
+          <span *ngIf="getCurrentLanguage() === 'tr'">Detaylı Süreç Bilgisi</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Detailed Process Information</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Informations Détaillées sur le Processus</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">معلومات مفصلة عن العملية</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="home-cta-section">
+    <div class="page-wrapper">
+      <div class="cta-content">
+        <h2>
+          <span *ngIf="getCurrentLanguage() === 'tr'">Projeniz İçin Hemen Teklif Alın</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Get a Quote for Your Project Now</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Obtenez un Devis pour Votre Projet Maintenant</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">احصل على عرض أسعار لمشروعك الآن</span>
+        </h2>
+        <p>
+          <span *ngIf="getCurrentLanguage() === 'tr'">Uzman ekibimiz size en uygun çözümü sunmak için hazır. Hemen iletişime geçin ve özel teklifinizi alın.</span>
+          <span *ngIf="getCurrentLanguage() === 'en'">Our expert team is ready to provide you with the best solution. Contact us now and get your custom quote.</span>
+          <span *ngIf="getCurrentLanguage() === 'fr'">Notre équipe d'experts est prête à vous fournir la meilleure solution. Contactez-nous maintenant et obtenez votre devis personnalisé.</span>
+          <span *ngIf="getCurrentLanguage() === 'ar'">فريقنا الخبير جاهز لتقديم أفضل حل لك. اتصل بنا الآن واحصل على عرض أسعار مخصص.</span>
+        </p>
+        <div class="cta-buttons">
+          <a routerLink="/contact" class="btn-primary">
+            <span *ngIf="getCurrentLanguage() === 'tr'">Teklif Al</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Get Quote</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Obtenir un Devis</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">احصل على عرض أسعار</span>
+          </a>
+          <a href="https://wa.me/905321307143" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <svg fill="currentColor" viewBox="0 0 24 24" style="width: 20px; height: 20px; margin-right: 8px; display: inline-block;">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span *ngIf="getCurrentLanguage() === 'tr'">WhatsApp ile İletişim</span>
+            <span *ngIf="getCurrentLanguage() === 'en'">Contact via WhatsApp</span>
+            <span *ngIf="getCurrentLanguage() === 'fr'">Contactez via WhatsApp</span>
+            <span *ngIf="getCurrentLanguage() === 'ar'">تواصل عبر WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

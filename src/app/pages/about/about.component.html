@@ -1,0 +1,83 @@
+<div class="about-page page-container" [attr.dir]="direction$ | async">
+  <div class="page-wrapper">
+    <!-- Header -->
+    <div class="about-header">
+      <div class="header-badge">
+        <span *ngIf="getCurrentLanguage() === 'tr'">Hakkımızda</span>
+        <span *ngIf="getCurrentLanguage() === 'en'">About Us</span>
+        <span *ngIf="getCurrentLanguage() === 'fr'">À Propos</span>
+        <span *ngIf="getCurrentLanguage() === 'ar'">من نحن</span>
+      </div>
+      <h1>{{ t?.about?.title }}</h1>
+      <p class="header-subtitle">{{ t?.about?.subtitle }}</p>
+    </div>
+
+    <!-- Story Section -->
+    <div class="about-story-section">
+      <div class="section-header">
+        <h2>{{ t?.about?.story?.title }}</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="story-content">
+        <p *ngFor="let paragraph of t?.about?.story?.paragraphs" class="story-paragraph">{{ paragraph }}</p>
+      </div>
+    </div>
+
+    <!-- Values Section -->
+    <div class="about-values-section">
+      <div class="values-header">
+        <h2>{{ t?.about?.values?.title }}</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="values-grid">
+        <div *ngFor="let value of t?.about?.values?.items; let i = index" class="value-card">
+          <div class="value-number">{{ (i + 1).toString().padStart(2, '0') }}</div>
+          <div class="value-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div class="value-content">
+            <h3>{{ value.title }}</h3>
+            <p>{{ value.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="why-choose-section">
+      <div class="section-header">
+        <h2>{{ t?.about?.whyChoose?.title }}</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="why-choose-grid">
+        <div *ngFor="let item of t?.about?.whyChoose?.items; let i = index" class="why-choose-card">
+          <div class="card-border"></div>
+          <div class="why-choose-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div class="card-number">{{ (i + 1).toString().padStart(2, '0') }}</div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="about-cta">
+      <div class="cta-content">
+        <h3>{{ t?.about?.cta?.title }}</h3>
+        <p>{{ t?.about?.cta?.description }}</p>
+        <a routerLink="/contact" class="cta-button">
+          {{ t?.about?.cta?.button }}
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

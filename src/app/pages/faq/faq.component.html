@@ -1,0 +1,65 @@
+<div class="faq-page page-container" [attr.dir]="direction$ | async">
+  <div class="page-wrapper">
+    <!-- Header -->
+    <div class="faq-header">
+      <div class="header-badge">
+        <span *ngIf="getCurrentLanguage() === 'tr'">SSS</span>
+        <span *ngIf="getCurrentLanguage() === 'en'">FAQ</span>
+        <span *ngIf="getCurrentLanguage() === 'fr'">FAQ</span>
+        <span *ngIf="getCurrentLanguage() === 'ar'">الأسئلة الشائعة</span>
+      </div>
+      <h1>{{ t?.faq?.title }}</h1>
+      <p class="header-subtitle">{{ t?.faq?.subtitle }}</p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="faq-container">
+      <div class="faq-list">
+        <div *ngFor="let item of t?.faq?.items; let i = index" class="faq-item" [class.active]="openIndex === i">
+          <div class="faq-number">{{ (i + 1).toString().padStart(2, '0') }}</div>
+          <div class="faq-content">
+            <button
+              (click)="toggleQuestion(i)"
+              class="faq-question"
+            >
+              <span class="faq-question-text">{{ item.question }}</span>
+              <div class="faq-icon-wrapper">
+                <svg 
+                  [class.open]="openIndex === i"
+                  class="faq-icon"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
+            <div 
+              *ngIf="openIndex === i" 
+              class="faq-answer"
+            >
+              <div class="answer-content">
+                <p>{{ item.answer }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="faq-cta">
+      <div class="cta-content">
+        <h3>{{ t?.faq?.moreInfo }}</h3>
+        <p>{{ t?.faq?.moreInfoDesc }}</p>
+        <a routerLink="/contact" class="cta-button">
+          {{ t?.faq?.getInTouch }}
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

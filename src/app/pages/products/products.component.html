@@ -1,0 +1,94 @@
+<div class="products-page page-container" [attr.dir]="direction$ | async">
+  <div class="page-wrapper">
+    <!-- Header -->
+    <div class="products-header">
+      <div class="header-badge">
+        <span *ngIf="getCurrentLanguage() === 'tr'">Ürünlerimiz</span>
+        <span *ngIf="getCurrentLanguage() === 'en'">Our Products</span>
+        <span *ngIf="getCurrentLanguage() === 'fr'">Nos Produits</span>
+        <span *ngIf="getCurrentLanguage() === 'ar'">منتجاتنا</span>
+      </div>
+      <h1>{{ t?.products?.categories?.title }}</h1>
+      <p class="header-subtitle">{{ t?.products?.categories?.subtitle }}</p>
+      <p class="header-description">{{ t?.products?.categories?.description }}</p>
+    </div>
+
+    <!-- Product Models Grid -->
+    <div class="models-section">
+      <div class="section-divider"></div>
+      <div class="models-grid">
+        <a *ngFor="let model of t?.products?.categories?.models; let i = index" [routerLink]="['/products', model.code]" class="model-card">
+          <div class="card-number">{{ (i + 1).toString().padStart(2, '0') }}</div>
+          <div class="model-image-wrapper">
+            <div class="model-image-container">
+              <img 
+                [src]="getModelImage(model.code)" 
+                [alt]="model.name"
+                class="model-image"
+                (error)="onImageError($event)"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div class="image-overlay">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="model-card-content">
+            <div class="model-header">
+              <div class="model-code-badge">{{ model.code }}</div>
+              <div class="model-category">
+                <span *ngIf="getCurrentLanguage() === 'tr'">PVC Kapı</span>
+                <span *ngIf="getCurrentLanguage() === 'en'">PVC Door</span>
+                <span *ngIf="getCurrentLanguage() === 'fr'">Porte PVC</span>
+                <span *ngIf="getCurrentLanguage() === 'ar'">باب PVC</span>
+              </div>
+            </div>
+            <h3 class="model-name">
+              <span *ngIf="getCurrentLanguage() === 'tr'">{{ model.name }}</span>
+              <span *ngIf="getCurrentLanguage() === 'en'">{{ model.nameEn }}</span>
+              <span *ngIf="getCurrentLanguage() === 'fr'">{{ model.nameFr }}</span>
+              <span *ngIf="getCurrentLanguage() === 'ar'">{{ model.nameAr }}</span>
+            </h3>
+            <p class="model-description">
+              {{ getShortDescription(model) }}
+            </p>
+            <div class="model-features">
+              <div *ngFor="let feature of model.features.slice(0, 3)" class="feature-item">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>{{ feature }}</span>
+              </div>
+            </div>
+            <div class="model-footer">
+              <span class="view-details">
+                {{ t?.products?.learnMore || 'Detayları Gör' }}
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="products-footer-note">
+      <p>{{ t?.products?.categories?.footerNote }}</p>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="page-cta">
+      <h3>{{ t?.products?.detail?.cta?.title }}</h3>
+      <p>{{ t?.products?.detail?.cta?.description }}</p>
+      <a routerLink="/contact" class="btn-secondary" style="background-color: white; color: var(--color-primary);">
+        {{ t?.products?.detail?.cta?.button }}
+      </a>
+    </div>
+  </div>
+</div>
