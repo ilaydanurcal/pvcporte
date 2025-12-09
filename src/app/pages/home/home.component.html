@@ -57,7 +57,7 @@
             <div *ngFor="let stat of t?.home?.africaExport?.stats" class="stat-card-item">
               <div class="stat-border"></div>
               <div class="stat-content">
-                <div class="stat-value-new">{{ stat.value }}</div>
+                <div class="stat-value-new">{{ stat.value }}+</div>
                 <div class="stat-label-new">{{ stat.label }}</div>
               </div>
             </div>
@@ -93,7 +93,7 @@
       <div class="products-showcase">
         <div class="product-showcase-card">
           <div class="product-showcase-image">
-            <img src="assets/images/OS005.jpeg" alt="PVC Door" (error)="onImageError($event)">
+            <img src="assets/images/OS-005.png" alt="PVC Door" (error)="onImageError($event)" draggable="false">
           </div>
           <div class="product-showcase-content">
             <div class="product-showcase-header">

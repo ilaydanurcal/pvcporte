@@ -63,13 +63,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getModelImage(code: string): string {
-    return `assets/images/${code}.jpeg`;
+    // OS kodunu OS-XXX formatına çevir (OS001 -> OS-001)
+    const formattedCode = code.replace(/(\d+)/, '-$1');
+    return `assets/images/${formattedCode}.png`;
   }
 
   onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
     if (img) {
-      img.src = 'assets/images/OS001.jpeg';
+      img.src = 'assets/images/OS-001.png';
     }
   }
 
@@ -119,6 +121,15 @@ export class ProductDetailComponent implements OnInit {
     if (lang === 'fr') return this.model.descriptionFr;
     if (lang === 'ar') return this.model.descriptionAr;
     return this.model.description;
+  }
+
+  getModelFeatures(): string[] {
+    if (!this.model) return [];
+    const lang = this.getCurrentLanguage();
+    if (lang === 'en' && this.model.featuresEn) return this.model.featuresEn;
+    if (lang === 'fr' && this.model.featuresFr) return this.model.featuresFr;
+    if (lang === 'ar' && this.model.featuresAr) return this.model.featuresAr;
+    return this.model.features || [];
   }
 
   getWhatsAppLink(): string {

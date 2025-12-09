@@ -4,7 +4,7 @@
       <!-- Logo -->
       <div class="logo-container">
         <a routerLink="/" class="logo">
-          <img src="assets/images/obsansuarllogo.png" alt="OBSAN SUARL" class="logo-image">
+          <img src="assets/images/obsansuarllogo.png" alt="OBSAN SUARL" class="logo-image" draggable="false">
         </a>
       </div>
 
@@ -31,7 +31,7 @@
             (click)="toggleLangDropdown()"
             type="button"
           >
-            <img class="lang-flag" [src]="getCurrentLanguageFlag()" [attr.alt]="getCurrentLanguageCountry()" [attr.title]="getCurrentLanguageCountry()" />
+            <img class="lang-flag" [src]="getCurrentLanguageFlag()" [attr.alt]="getCurrentLanguageCountry()" [attr.title]="getCurrentLanguageCountry()" draggable="false" />
             <span class="lang-name">{{ getCurrentLanguageName() }}</span>
             <svg class="lang-arrow" [class.open]="isLangDropdownOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -46,7 +46,7 @@
               type="button"
               [attr.title]="lang.country"
             >
-              <img class="lang-flag" [src]="lang.flag" [attr.alt]="lang.country" [attr.title]="lang.country" />
+              <img class="lang-flag" [src]="lang.flag" [attr.alt]="lang.country" [attr.title]="lang.country" draggable="false" />
               <span class="lang-name">{{ lang.name }}</span>
               <span class="lang-country">{{ lang.country }}</span>
               <svg *ngIf="getCurrentLanguage() === lang.code" class="lang-check" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +107,7 @@
           type="button"
           [attr.title]="lang.country"
         >
-          <img class="lang-flag" [src]="lang.flag" [attr.alt]="lang.country" [attr.title]="lang.country" />
+          <img class="lang-flag" [src]="lang.flag" [attr.alt]="lang.country" [attr.title]="lang.country" draggable="false" />
           <span class="lang-name">{{ lang.name }}</span>
           <span class="lang-country">{{ lang.country }}</span>
         </button>

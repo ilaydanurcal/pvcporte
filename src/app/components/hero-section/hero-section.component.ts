@@ -36,6 +36,6 @@ export class HeroSectionComponent implements OnInit {
 
   onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
-    img.src = 'assets/images/OS010.jpeg';
+    img.src = 'assets/images/OS-010.png';
   }
 }

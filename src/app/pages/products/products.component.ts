@@ -41,14 +41,16 @@ export class ProductsComponent implements OnInit {
   
   getModelImage(code: string): string {
     // OS koduna göre resim yolu oluştur
-    // Örnek: OS001 -> assets/images/OS001.jpeg
-    return `assets/images/${code}.jpeg`;
+    // Örnek: OS001 -> assets/images/OS-001.png
+    // OS kodunu OS-XXX formatına çevir (OS001 -> OS-001)
+    const formattedCode = code.replace(/(\d+)/, '-$1');
+    return `assets/images/${formattedCode}.png`;
   }
   
   onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
     if (img) {
-      img.src = 'assets/images/OS001.jpeg'; // Fallback to first image
+      img.src = 'assets/images/OS-001.png'; // Fallback to first image
     }
   }
 
@@ -65,6 +67,15 @@ export class ProductsComponent implements OnInit {
     // Sadece ilk cümleyi al (nokta ile biten ilk cümle)
     const firstSentence = description.split('.')[0];
     return firstSentence ? firstSentence + '.' : description.substring(0, 120) + '...';
+  }
+
+  getModelFeatures(model: any): string[] {
+    if (!model) return [];
+    const lang = this.getCurrentLanguage();
+    if (lang === 'en' && model.featuresEn) return model.featuresEn;
+    if (lang === 'fr' && model.featuresFr) return model.featuresFr;
+    if (lang === 'ar' && model.featuresAr) return model.featuresAr;
+    return model.features || [];
   }
 
   updateSEO(): void {

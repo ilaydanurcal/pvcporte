@@ -29,19 +29,19 @@
         </p>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="stat-number">{{ t?.hero?.stats?.[0]?.value || '5+' }}</div>
+            <div class="stat-number">{{ t?.hero?.stats?.[0]?.value || '5' }}+</div>
             <div class="stat-text">
               {{ t?.hero?.stats?.[0]?.label || 'Yıl Deneyim' }}
             </div>
           </div>
           <div class="hero-stat">
-            <div class="stat-number">{{ t?.hero?.stats?.[1]?.value || '10+' }}</div>
+            <div class="stat-number">{{ t?.hero?.stats?.[1]?.value || '10' }}+</div>
             <div class="stat-text">
               {{ t?.hero?.stats?.[1]?.label || 'Ülkeye İhracat' }}
             </div>
           </div>
           <div class="hero-stat">
-            <div class="stat-number">{{ t?.hero?.stats?.[2]?.value || '100+' }}</div>
+            <div class="stat-number">{{ t?.hero?.stats?.[2]?.value || '100' }}+</div>
             <div class="stat-text">
               {{ t?.hero?.stats?.[2]?.label || 'Tamamlanan Proje' }}
             </div>
@@ -65,7 +65,7 @@
       <div class="hero-image-wrapper">
         <div class="hero-image-container">
           <div class="hero-image-overlay"></div>
-          <img src="assets/images/OS010.jpeg" alt="PVC Door" class="hero-image" (error)="onImageError($event)">
+          <img src="assets/images/OS-010.png" alt="PVC Door" class="hero-image" (error)="onImageError($event)" draggable="false">
           <div class="hero-image-badge">
             <span *ngIf="getCurrentLanguage() === 'tr'">Premium Kalite</span>
             <span *ngIf="getCurrentLanguage() === 'en'">Premium Quality</span>

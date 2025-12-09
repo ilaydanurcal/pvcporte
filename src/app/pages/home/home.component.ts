@@ -70,6 +70,6 @@ export class HomeComponent implements OnInit {
 
   onImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
-    img.src = 'assets/images/OS001.jpeg';
+    img.src = 'assets/images/OS-001.png';
   }
 }
